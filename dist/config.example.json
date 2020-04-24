@@ -1,0 +1,9 @@
+{
+  "CAMPAIGN_SCRIPTS": "<link to page 'API Scripts' of campgain>",
+
+  "NAME": "<user name displayed at roll20.net/welcome when logged>",
+  "EMAIL": "email@gmail.com",
+  "PASSWORD": "password",
+
+  "CHROME_PROFILE_PATH": "<go to chrome://version to get 'Profile Path', and put its parent here (use double blackslash (\\) to escape string)>"
+}

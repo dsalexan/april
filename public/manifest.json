@@ -1,0 +1,25 @@
+{
+  "short_name": "April",
+  "name": "April | Roll20 API Manager",
+  "icons": [
+    {
+      "src": "../assets/icons/win/icon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "../assets/icons/png/128x128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "../assets/icons/png/512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
