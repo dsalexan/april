@@ -50,7 +50,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     titleBarStyle: 'hidden',
     width: 300,
-    height: 700,
+    height: 800,
     icon: `${__dirname}/../assets/icons/win/icon.ico`,
     backgroundColor: '#282c34',
     show: false,
@@ -111,7 +111,7 @@ app.on('activate', function () {
 var driver
 
 electron.ipcMain.on('@april/publish', async (event, scripts) => {
-  // console.log('publish', scripts)
+  console.log('publish', scripts)
 
   mainWindow.webContents.send('@april/notify', `API sandbox is shutting down...`)
 

@@ -9,8 +9,10 @@ import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import pink from '@material-ui/core/colors/pink'
 import blue from '@material-ui/core/colors/blue'
+import red from '@material-ui/core/colors/red'
+import amber from '@material-ui/core/colors/amber'
 
-const { ipcRenderer, remote } = window.require ? window.require('electron') : {}
+const { ipcRenderer, remote, shell } = window.require ? window.require('electron') : {}
 const fs = window.require && window.require('fs')
 const path = window.require && window.require('path')
 const app = remote && remote.app
@@ -21,6 +23,8 @@ const theme = createMuiTheme({
   palette: {
     primary: pink,
     secondary: blue,
+    error: red,
+    warning: amber,
   },
   overrides: {
     MuiCheckbox: {
@@ -110,6 +114,9 @@ function App() {
   const handleClickCancel = (event) => {
     ipcRenderer && ipcRenderer.send('@april/cancel')
   }
+  const handleClickRoll20 = (event) => {
+    shell.openExternal(event === 'home' ? 'https://roll20.net/' : 'https://app.roll20.net/campaigns/scripts/6446329')
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -140,6 +147,15 @@ function App() {
           </div>
           <br />
           <div className="buttons">
+            <Button variant="contained" color="primary" onClick={() => handleClickRoll20('home')}>
+              Roll20
+            </Button>
+            <br />
+            <Button variant="contained" color="primary" onClick={() => handleClickRoll20('api')}>
+              Campaign API Scripts
+            </Button>
+            <br />
+            <br />
             <Button variant="contained" color="secondary" onClick={handleClickPrepare}>
               Prepare
             </Button>
@@ -154,7 +170,7 @@ function App() {
             </Button>
             <br />
 
-            <Button variant="contained" color="danger" onClick={handleClickCancel}>
+            <Button variant="contained" color="error" onClick={handleClickCancel}>
               Close
             </Button>
           </div>
