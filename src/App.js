@@ -7,10 +7,12 @@ import { makeStyles, createMuiTheme, ThemeProvider } from '@material-ui/core/sty
 import Button from '@material-ui/core/Button'
 import Checkbox from '@material-ui/core/Checkbox'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
+
 import pink from '@material-ui/core/colors/pink'
 import blue from '@material-ui/core/colors/blue'
 import red from '@material-ui/core/colors/red'
 import amber from '@material-ui/core/colors/amber'
+import green from '@material-ui/core/colors/green'
 
 const { ipcRenderer, remote, shell } = window.require ? window.require('electron') : {}
 const fs = window.require && window.require('fs')
@@ -25,6 +27,7 @@ const theme = createMuiTheme({
     secondary: blue,
     error: red,
     warning: amber,
+    success: green,
   },
   overrides: {
     MuiCheckbox: {
@@ -115,7 +118,13 @@ function App() {
     ipcRenderer && ipcRenderer.send('@april/cancel')
   }
   const handleClickRoll20 = (event) => {
-    shell.openExternal(event === 'home' ? 'https://roll20.net/' : 'https://app.roll20.net/campaigns/scripts/6446329')
+    shell.openExternal(
+      event === 'home'
+        ? 'https://roll20.net/'
+        : event === 'api'
+        ? 'https://app.roll20.net/campaigns/scripts/6446329'
+        : 'https://docs.google.com/spreadsheets/d/1TFfWls7t2McM4gfPhn1m-NWddpo0Sb8TWGClTLawueM/edit#gid=0'
+    )
   }
 
   return (
@@ -153,6 +162,10 @@ function App() {
             <br />
             <Button variant="contained" color="primary" onClick={() => handleClickRoll20('api')}>
               Campaign API Scripts
+            </Button>
+            <br />
+            <Button variant="contained" color="green" onClick={() => handleClickRoll20('soundboard')}>
+              Soundboard
             </Button>
             <br />
             <br />

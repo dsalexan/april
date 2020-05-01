@@ -50,7 +50,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     titleBarStyle: 'hidden',
     width: 300,
-    height: 800,
+    height: 900,
     icon: `${__dirname}/../assets/icons/win/icon.ico`,
     backgroundColor: '#282c34',
     show: false,
